@@ -1,0 +1,46 @@
+<DataScreen>:
+    data: data
+    MDBoxLayout:
+        orientation: 'vertical'
+        
+        MDToolbar:
+            title: 'Track your feelings'
+            specific_text_color: 1,1,1,1
+        
+        MDBoxLayout:
+            orientation: 'vertical'
+            padding: 20,10,20,10
+            spacing: 10
+            md_bg_color: get_color_from_hex('#121212')
+
+            ScrollView:
+                MDBoxLayout:
+                    id: data
+                    adaptive_height: True
+                    orientation: 'vertical'
+                    padding: 30,50,30,50
+                    spacing: 10
+
+            MDBoxLayout:
+                adaptive_height: True
+                spacing: 10
+                adaptive_width: True
+                padding: 10
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                MDFillRoundFlatButton:
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    font_style: 'Button'
+                    text: 'REFRESH DATA'
+                    on_release: root.show_data()
+                
+                MDFillRoundFlatButton:
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    font_style: 'Button'
+                    text: 'SAVE DATA'
+                    on_release:  app.file_manager_open()
+                
+                MDFillRoundFlatButton:
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    font_style: 'Button'
+                    text: 'ERASE DATA'
+                    on_release: root.show_erase_data_alert()

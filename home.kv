@@ -1,0 +1,176 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+
+<HomeScreen>:
+    first_reaction: first_reaction
+    additional_info: additional_info
+    send_data_button: send_data_button
+
+    MDBoxLayout:
+        orientation: 'vertical'
+                    
+        MDBoxLayout:
+            orientation: 'vertical'
+            padding: 50,10,50,10
+            spacing: 20
+            md_bg_color: get_color_from_hex('#121212')
+
+            
+            MDLabel:
+                font_style: 'H5'
+                halign: 'center'
+                adaptive_height: True
+                markup: True
+                text: '[font=data/font/coffeeForBreakfast]How are you feeling right now?[/font]'
+                color: app.theme_cls.primary_color
+                bold: True
+                
+            MDBoxLayout:
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                orientation: 'vertical'
+                spacing: 20
+
+                MDFillRoundFlatButton:
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    text: 'Feeling normal'
+                    font_style: 'Button'
+                    bold: True
+                    size_hint_x: 1
+                    on_release: root.get_mood('Feeling normal')
+                
+                MDGridLayout:
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    spacing: 20
+                    cols:2
+                    MDCard:
+                        md_bg_color: get_color_from_hex('#FBF8F1')
+                        orientation: 'vertical'
+                        border_radius: 20
+                        radius: [15]
+                        padding: 5
+                        
+                        Image:
+                            source:'images/happy.png'
+                        
+                        MDFillRoundFlatButton:
+                            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                            font_style: 'Button'
+                            text: 'HAPPY'
+                            size_hint_x: 1
+                            on_release: root.get_mood('Happy')
+
+                    MDCard:
+                        orientation: 'vertical'
+                        md_bg_color: get_color_from_hex('#FBF8F1')
+                        border_radius: 20
+                        radius: [15]
+                        padding: 5
+                        
+                        Image:
+                            source:'images/excited.png'
+                       
+                        MDFillRoundFlatButton:
+                            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                            font_style: 'Button'
+                            text: 'EXCITED'
+                            size_hint_x: 1
+                            on_release: root.get_mood('Excited')
+
+                    MDCard:
+                        orientation: 'vertical'
+                        md_bg_color: get_color_from_hex('#FBF8F1')
+                        border_radius: 20
+                        radius: [15]
+                        padding: 5
+                        
+                        Image:
+                            source:'images/stressed.png'
+                        
+                        MDFillRoundFlatButton:
+                            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                            font_style: 'Button'
+                            text: 'STRESSED'
+                            size_hint_x: 1
+                            on_release: root.get_mood('Stressed')
+
+                    MDCard:
+                        orientation: 'vertical'
+                        md_bg_color: get_color_from_hex('#FBF8F1')
+                        border_radius: 20
+                        radius: [15]
+                        padding: 5
+                        
+                        Image:
+                            source:'images/depressed.png'
+                       
+                        MDFillRoundFlatButton:
+                            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                            font_style: 'Button'
+                            text: 'DEPRESSED'
+                            size_hint_x: 1
+                            on_release: root.get_mood('Depressed')
+
+                    MDCard:
+                        orientation: 'vertical'
+                        md_bg_color: get_color_from_hex('#FBF8F1')
+                        border_radius: 20
+                        radius: [15]
+                        padding: 5
+                       
+                        Image:
+                            source:'images/angry.png'
+                       
+                        MDFillRoundFlatButton:
+                            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                            font_style: 'Button'
+                            text: 'ANGRY'
+                            size_hint_x: 1
+                            on_release: root.get_mood('Angry')
+
+                    MDCard:
+                        orientation: 'vertical'
+                        md_bg_color: get_color_from_hex('#FBF8F1')
+                        border_radius: 20
+                        radius: [15]
+                        padding: 5
+                       
+                        Image:
+                            source:'images/sad.png'
+                       
+                        MDFillRoundFlatButton:
+                            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                            font_style: 'Button'
+                            text: 'SAD'
+                            size_hint_x: 1
+                            on_release: root.get_mood('Sad')
+            
+            MDBoxLayout:
+                orientation: 'vertical'
+                adaptive_height: True
+                spacing: 10
+                padding: 10
+                
+                MDBoxLayout:
+                    orientation: 'horizontal'
+                    adaptive_height: True
+                    MDLabel:
+                        adaptive_height: True  
+                        halign: 'center'
+                        font_style: 'H6'
+                        id: first_reaction
+                        markup: True
+                        text: ' '
+                
+                TellMeMoreTweet:
+                    id: additional_info
+                    mode: 'rectangle'
+                    multiline: True
+                    hint_text: 'Tell me more'
+                    bold: True
+          
+                MDFillRoundFlatButton:
+                    id: send_data_button
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    font_style: 'Button'
+                    size_hint_x: 0.6
+                    text: 'SUBMIT'
+                    on_release: root.send_data()
